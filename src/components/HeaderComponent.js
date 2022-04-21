@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, Jumbotron } from 'reactstrap';
+import {NavLink } from 'react-router-dom';
 
 class Header extends Component {
 
@@ -13,7 +14,7 @@ class Header extends Component {
 
     toggleNav() {
         this.setState({
-            isNaveOpen: !this.state.isNaveOpen
+            isNaveOpen: !this.state.isNavOpen
         });
     }
 
@@ -33,7 +34,7 @@ class Header extends Component {
 
                 <Navbar dark sticky="top" expand="md">
                     <div className="container">
-                        <NavbarBrand className="mr-auto" href="/"><img src="/assets/images/logo.png" height="30" width "30" alt="Nucamp Logo"/></NavbarBrand>
+                        <NavbarBrand className="mr-auto" href="/"><img src="/assets/images/logo.png" height="30" width="30" alt="Nucamp Logo"/></NavbarBrand>
                         <NavbarToggler onClick={this.toggleNav} />
                         <Collapse isOpen={this.state.isNavOpen} navbar>
                             <Nav navbar>
@@ -43,8 +44,8 @@ class Header extends Component {
                                     </NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink className = "nav-link" to="/directory">
-                                        <i className= "fa fa-list fa-lg"/> Directory
+                                    <NavLink className= "nav-link" to="/directory">
+                                        <i className="fa fa-list fa-lg"/> Directory
                                     </NavLink>
                                 </NavItem>
                                 <NavItem>
@@ -54,7 +55,7 @@ class Header extends Component {
                                 </NavItem>
                                 <NavItem>
                                     <NavLink className="nav-link" to="/contactus">
-                                        <i className="fa fa-address-card fa-lg" /> Contact Us
+                                        <i className="fa fa-address-card fa-lg"/> Contact Us
                                     </NavLink>
                                 </NavItem>
                             </Nav>
