@@ -6,6 +6,7 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
+    "@types/reactstrap": "^8.7.2",
     "bootstrap": "4.5.2",
     "bootstrap-social": "5.1.1",
     "font-awesome": "4.7.0",
@@ -42,5 +43,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/bootstrap": "5.1.10",
+    "@types/react": "^18.0.6",
+    "@types/react-dom": "^18.0.2",
+    "@types/react-router-dom": "5.3.3",
+    "@types/testing-library__jest-dom": "^5.14.3",
+    "@types/testing-library__user-event": "^4.2.0"
   }
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
+import { Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
 
 function RenderCard({item}) {
     return (
@@ -13,24 +13,22 @@ function RenderCard({item}) {
     );
 }
 
-
 function Home(props) {
     return (
-        <div className = "container">
-            <div className ="row">
-                <div className = "col-md m-1">
-                    <RenderCard item = {props.campsite } />
+        <div className="container">
+            <div className="row">
+                <div className="col-md m-1">
+                    <RenderCard item={props.campsite} />
                 </div>
                 <div className="col-md m-1">
-                    <RenderCard item = {props.promotion} />
+                    <RenderCard item={props.promotion} />
                 </div>
-                <div className = "col-md m-1">
-                    <RenderCard item = {props.partner} />
+                <div className="col-md m-1">
+                    <RenderCard item={props.partner} />
                 </div>
             </div>
         </div>
     );
 }
 
-export default Home;
-
+export default Home;   
