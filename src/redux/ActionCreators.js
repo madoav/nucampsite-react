@@ -2,6 +2,7 @@ import * as ActionTypes from './ActionTypes';
 import { baseUrl } from '../shared/baseUrl';
 
 
+
 export const addComment = comment => ({
     type: ActionTypes.ADD_COMMENT,
     payload: comment
@@ -89,6 +90,7 @@ export const fetchComments = () => dispatch => {
         .catch(error => dispatch(commentsFailed(error.message)));
 };
 
+
 export const commentsFailed = errMess => ({
     type: ActionTypes.COMMENTS_FAILED,
     payload: errMess
@@ -149,3 +151,79 @@ export const addCampsites = campsites => ({
     type: ActionTypes.ADD_CAMPSITES,
     payload: campsites
 });
+
+export const partnersLoading = () => ({
+    type: ActionTypes.PARTNERS_LOADING
+});
+
+export const partnersFailed = errMess => ({
+    type: ActionTypes.PARTNERS_FAILED,
+    payload: errMess
+});
+
+export const addPartners = partners => ({
+    type: ActionTypes.ADD_PARTNERS,
+    payload: partners
+});
+
+export const fetchPartners = () => (dispatch) => {
+
+    dispatch(partnersLoading());
+
+    return fetch(baseUrl + 'partners')
+        .then(response => {
+            if (response.ok) {
+                return response;
+            } else {
+                const error = new Error ('Error ${response.status}: ${response.statusText}');
+                error.response = response;
+                throw error;
+            }
+
+        },
+        error => {
+            const errMess = new Error(error.message);
+            throw errMess;
+        }
+        )
+
+        .then(response => response.json())
+        .then(partners => dispatch(addPartners(partners)))
+        .catch(error => dispatch(partnersFailed(error.message)));
+        
+    };
+
+export const postFeedback = (feedback) => dispatch => {
+
+    const newComment = {
+        ...feedback
+    };
+console.log("hello")
+    return fetch(baseUrl + 'feedback', {
+        method: "POST",
+        body: JSON.stringify(newComment),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            return response;
+        } else {
+            const error = new Error('Error ${response.status}: ${response.statusText}');
+            error.response = response;
+            throw error;
+        }
+    },
+
+    error => {throw error; }
+    )
+    .then(response => response.json())
+    .then(console.log('Current State is: ' + JSON.stringify(newComment)))
+    .then(alert('Thank you for your feedback! \r\n\r\n You Submitted:' + JSON.stringify(newComment)))
+    .catch(error => {
+        console.log('post comment', error.message);
+        alert('Your comment coould not be posted/nError: ' + error.message);
+    });
+
+};
